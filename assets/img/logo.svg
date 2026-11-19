@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 100" role="img" aria-labelledby="title">
+  <title id="title">Wash Brothers — Lavanderia especializada em calçados, bonés e bolsas</title>
+  <g transform="rotate(-5 126 41)" font-family="Georgia, serif" font-size="39" font-style="italic" font-weight="900" letter-spacing="-2.4" paint-order="stroke fill" stroke-linejoin="round">
+    <text x="12" y="54" fill="#12113f" stroke="#12113f" stroke-width="8">Wash Brothers</text>
+    <text x="9" y="49" fill="#f2338e" stroke="#fff8eb" stroke-width="5">Wash Brothers</text>
+  </g>
+  <text x="126" y="74" text-anchor="middle" fill="#fff8eb" font-family="Arial,sans-serif" font-weight="bold" font-size="10">Lavanderia especializada em</text>
+  <text x="126" y="87" text-anchor="middle" fill="#fff8eb" font-family="Arial,sans-serif" font-weight="bold" font-size="10">calçados, bonés e bolsas</text>
+</svg>
