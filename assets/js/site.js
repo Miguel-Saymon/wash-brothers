@@ -54,14 +54,16 @@ if ($('[data-horario]')) {
 }
 
 function renderCards(el) {
-  const ids = el.dataset.cards === 'home' ? ['limpeza','clareamento','pintura'] : Object.keys(CATALOGO.categorias);
   const home = el.dataset.cards === 'home';
+  const ids = home ? ['limpeza','clareamento','pintura'] : Object.keys(CATALOGO.categorias);
   el.innerHTML = ids.map(id => {
     const [titulo,descricao,simbolo] = CATALOGO.categorias[id];
     const valores = CATALOGO.calcados.filter(item => item[1] === id && item[4]).map(item => item[4][0]);
     const preco = valores.length ? 'A partir de ' + reais(Math.min(...valores)) : 'Consulte';
-    const link = home ? 'servicos.html#' + id : whatsapp('Olá, Wash Brothers! Quero saber mais sobre ' + titulo + ' e pedir um orçamento.');
-    return `<article class="service-card" id="${id}"><span class="service-icon">${icone(simbolo)}</span><h3>${titulo}</h3><p>${descricao}</p><div class="card-bottom"><strong>${preco}</strong><a class="${home ? 'text-link' : 'button small outline'}" href="${link}">${home ? 'Ver serviço' : 'Quero esse serviço'}<span class="sr-only"> — ${titulo}</span></a></div></article>`;
+    const link = home
+      ? `<a class="text-link" href="servicos.html#${id}">Ver serviço<span class="sr-only"> — ${titulo}</span></a>`
+      : '';
+    return `<article class="service-card" id="${id}"><span class="service-icon">${icone(simbolo)}</span><h3>${titulo}</h3><p>${descricao}</p><div class="card-bottom"><strong>${preco}</strong>${link}</div></article>`;
   }).join('');
 }
 $$('[data-cards]').forEach(renderCards);
@@ -180,38 +182,6 @@ if (consulta) {
     event.preventDefault();
     const dados = new FormData(consulta);
     location.href = whatsapp(`Olá, Wash Brothers! Meu nome é ${dados.get('nome').trim()}. Quero pedir um orçamento para ${dados.get('item')}.\nDetalhes: ${dados.get('detalhes').trim()}\nVou anexar as fotos aqui na conversa.`);
-  });
-}
-
-const rastreio = $('#pedido-form');
-if (rastreio) {
-  // Dados fictícios. A demonstração não consulta o sistema da loja.
-  const pedidos = {'WB-1024':1,'WB-1025':0,'WB-1026':2};
-  const etapas = ['Recebido','Em tratamento','Pronto para retirada'];
-  const status = $('[data-pedido-status]');
-  const timeline = $('[data-pedido-etapas]');
-  const codigo = $('#codigo');
-  $$('[data-exemplo-pedido]').forEach(botao => botao.addEventListener('click', () => {
-    codigo.value = botao.dataset.exemploPedido;
-    rastreio.requestSubmit();
-  }));
-  rastreio.addEventListener('submit', event => {
-    event.preventDefault();
-    const chave = codigo.value.trim().toUpperCase();
-    const atual = pedidos[chave];
-    if (!Object.hasOwn(pedidos, chave)) {
-      status.textContent = 'Código de exemplo não encontrado. Experimente WB-1024, WB-1025 ou WB-1026.';
-      timeline.hidden = true;
-      timeline.replaceChildren();
-      return;
-    }
-    status.textContent = `Pedido ${chave} · ${etapas[atual]}`;
-    timeline.innerHTML = etapas.map((etapa, index) => {
-      const classe = index < atual ? 'feito' : index === atual ? 'atual' : '';
-      const estado = index < atual ? 'Concluído' : index === atual ? 'Etapa atual' : 'Pendente';
-      return `<li class="${classe}" ${index === atual ? 'aria-current="step"' : ''}><span class="step-marker">${index + 1}</span><div><strong>${etapa}</strong><small>${estado}</small></div></li>`;
-    }).join('');
-    timeline.hidden = false;
   });
 }
 

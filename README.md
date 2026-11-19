@@ -10,9 +10,9 @@ Site demonstrativo em português do Brasil, com dez páginas estáticas. Usa HTM
 
 ## Arquivos e edição
 
-- **HTML:** `index.html`, `servicos.html`, `precos.html`, `antes-e-depois.html`, `como-funciona.html`, `sobre.html`, `faq.html`, `contato.html`, `acompanhar-pedido.html` e `dicas.html`. Os textos ficam em cada página. O cabeçalho, o rodapé e os dados estruturados se repetem nos dez arquivos. Ao mudar endereço, links ou horários, procure também pelos valores antigos nos arquivos HTML e pela configuração de horário em `assets/js/servicos.js`.
+- **HTML:** `index.html`, `servicos.html`, `precos.html`, `antes-e-depois.html`, `como-funciona.html`, `sobre.html`, `faq.html`, `contato.html`, `avaliacoes.html` e `dicas.html`. Os textos ficam em cada página. O cabeçalho, o rodapé e os dados estruturados se repetem nos dez arquivos. Ao mudar endereço, links ou horários, procure também pelos valores antigos nos arquivos HTML e pela configuração de horário em `assets/js/servicos.js`.
 - **Catálogo:** edite `assets/js/servicos.js`. Cada linha de calçados contém identificador, categoria, nome, descrição e preços em centavos na ordem de 8 dias úteis, 3 dias úteis e mesmo dia. Use `null` para “Consulte”. Esse catálogo alimenta os cards, as tabelas e as opções do simulador. A regra promocional fica em `PROMOCAO`. Se ela mudar, atualize também os cartazes HTML e a resposta do FAQ.
-- **Interações:** `assets/js/site.js` contém o horário no fuso de São Paulo, os controles de navegação, as abas, o simulador, os filtros, os sliders e os formulários. Na consulta por foto, as imagens são anexadas pelo visitante dentro do WhatsApp. No acompanhamento, use WB-1024, WB-1025 ou WB-1026.
+- **Interações:** `assets/js/site.js` contém o horário no fuso de São Paulo, os controles de navegação, as abas, o simulador, os filtros, os sliders e os formulários. Na consulta por foto, as imagens são anexadas pelo visitante dentro do WhatsApp.
 - **Identidade visual:** as variáveis de cor e tipografia ficam no início de `assets/css/site.css`. Substitua `assets/img/logo.svg` pelo logotipo oficial e ajuste dimensões e texto alternativo se necessário. Substitua `assets/img/capa.jpg` pela imagem de capa escolhida.
 - **Galeria e personagens:** procure os comentários `TODO` em `index.html`, `antes-e-depois.html` e `sobre.html`. Na galeria, use duas fotos com o mesmo enquadramento e atualize os textos alternativos. As fotos podem preencher o quadro com `object-fit:cover`; retire o filtro de cor aplicado a `.before img` quando inserir as fotos reais.
 
@@ -24,7 +24,7 @@ A quantidade e o prazo de entrega valem para todos os serviços selecionados. Pa
 
 - Logotipo provisório, foto conceitual da capa e quadros reservados para as ilustrações oficiais de Tico e Bruno.
 - Comparações ilustradas para substituir por fotos reais de antes e depois.
-- Depoimentos, números institucionais e registros de acompanhamento fictícios. Texto de apresentação da marca a validar com os proprietários.
+- Depoimentos e números institucionais fictícios. Substitua os exemplos em `avaliacoes.html` por avaliações reais autorizadas. Texto de apresentação da marca a validar com os proprietários.
 - Preços dos reparos, de bonés e de bolsas, prazos de bonés e bolsas e nome completo do serviço “Troca de …”.
 - Condições da oferta entre prazos e cálculo da economia do pacote, conforme a interpretação descrita acima.
 - Endereço público para completar os metadados de compartilhamento.
